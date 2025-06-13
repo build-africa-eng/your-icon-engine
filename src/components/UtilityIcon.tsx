@@ -1,6 +1,6 @@
 // src/components/UtilityIcon.tsx
 import React from 'react';
-import { IconRenderer } from '../icons/IconRenderer';
+import { IconRenderer } from '../icons/iconRenderer';
 import { getMatchedIcon } from '../utils/match';
 
 interface UtilityIconProps {
