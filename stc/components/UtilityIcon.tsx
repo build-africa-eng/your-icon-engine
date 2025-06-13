@@ -1,0 +1,1 @@
+import React from 'react'; import { getMatchedIcon } from '../utils/matcher'; import IconRenderer from '../icons/iconRenderer'; export default function UtilityIcon({ utility }: { utility: string }) { const match = getMatchedIcon(utility); return match ? <IconRenderer icon={match.icon} source={match.source} /> : <span>❓</span>; }
