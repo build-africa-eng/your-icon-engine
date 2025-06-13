@@ -1,5 +1,6 @@
 // src/icons/heroicons.ts
-const Heroicons = await import('@heroicons/react/24/outline');
+import * as Heroicons from '@heroicons/react/24/outline';
+
 export function getHeroIcon(name: string): React.ElementType {
   const toPascalCase = (str: string) =>
     str.replace(/(^\w|-\w)/g, (g) => g.replace('-', '').toUpperCase());
