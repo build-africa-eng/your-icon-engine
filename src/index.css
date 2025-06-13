@@ -1,4 +1,7 @@
 /* src/index.css */
 @import "tailwindcss";
-@tailwind components;
-@tailwind utilities;
+
+/* Custom styles can follow */
+body {
+  font-family: sans-serif;
+}
