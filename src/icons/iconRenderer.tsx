@@ -1,7 +1,7 @@
 // src/icons/IconRenderer.tsx
-import React, { Suspense, lazy } from 'react';
-const getLucideIcon = lazy(() => import('./lucide').then((mod) => ({ default: mod.getLucideIcon })));
-const getHeroIcon = lazy(() => import('./heroicons').then((mod) => ({ default: mod.getHeroIcon })));
+import React from 'react';
+import { getLucideIcon } from './lucide';
+import { getHeroIcon } from './heroicons';
 import { IconSource } from '../utils/matcher';
 
 interface IconRendererProps {
@@ -11,12 +11,15 @@ interface IconRendererProps {
 }
 
 export function IconRenderer({ icon, source, className = 'w-5 h-5' }: IconRendererProps) {
-  const DefaultIcon = getLucideIcon ? () => <getLucideIcon icon="HelpCircle" /> : null;
-  return (
-    <Suspense fallback={<div className={className} />}>
-      {source === 'lucide' && getLucideIcon ? <getLucideIcon icon={icon} /> : null}
-      {source === 'heroicons' && getHeroIcon ? <getHeroIcon icon={icon} /> : null}
-      {!getLucideIcon && !getHeroIcon && DefaultIcon ? <DefaultIcon /> : null}
-    </Suspense>
-  );
+  const DefaultIcon = getLucideIcon('HelpCircle');
+  switch (source) {
+    case 'lucide':
+      const LucideIcon = getLucideIcon(icon);
+      return <LucideIcon className={className} />;
+    case 'heroicons':
+      const HeroIcon = getHeroIcon(icon);
+      return <HeroIcon className={className} />;
+    default:
+      return <DefaultIcon className={className} />;
+  }
 }
