@@ -1,4 +1,4 @@
-// src/utils/match.ts
+// src/utils/matcher.ts
 export type IconSource = 'lucide' | 'heroicons';
 
 export interface UtilityRule {
