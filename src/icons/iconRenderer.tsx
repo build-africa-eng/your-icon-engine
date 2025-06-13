@@ -2,7 +2,7 @@
 import React from 'react';
 import { getLucideIcon } from './lucide';
 import { getHeroIcon } from './heroicons';
-import { IconSource } from '../utils/match';
+import { IconSource } from '../utils/matcher';
 
 interface IconRendererProps {
   icon: string;
