@@ -1,7 +1,7 @@
-// src/components/IconRenderer.tsx
+// src/icons/IconRenderer.tsx
 import React from 'react';
-import { getLucideIcon } from '../icons/lucide';
-import { getHeroIcon } from '../icons/heroicons';
+import { getLucideIcon } from './lucide';
+import { getHeroIcon } from './heroicons';
 import { IconSource } from '../utils/match';
 
 interface IconRendererProps {
