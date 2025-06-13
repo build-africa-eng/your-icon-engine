@@ -1,1 +1,25 @@
-import React from 'react'; import * as Lucide from 'lucide-react'; import { IconSource } from '../utils/matcher'; import { DockerIconMap } from './dockerIconMap'; const toPascal = (s: string) => s.replace(/(^\w|\-\w)/g, m => m.replace(/-/, '').toUpperCase()); export default function IconRenderer({ icon, source }: { icon: string; source: IconSource }) { if (source === 'lucide') { const LucideIcon = Lucide[toPascal(icon) as keyof typeof Lucide] || Lucide.HelpCircle; return <LucideIcon />; } if (source === 'docker') { const src = DockerIconMap[icon]; return src ? <img src={src} alt={icon} style={{ width: 24, height: 24 }} /> : <span>❓</span>; } return <span>❓</span>; }
+// src/components/IconRenderer.tsx
+import React from 'react';
+import { getLucideIcon } from '../icons/lucide';
+import { getHeroIcon } from '../icons/heroicons';
+import { IconSource } from '../utils/match';
+
+interface IconRendererProps {
+  icon: string;
+  source: IconSource;
+  className?: string;
+}
+
+export function IconRenderer({ icon, source, className = 'w-5 h-5' }: IconRendererProps) {
+  const DefaultIcon = getLucideIcon('HelpCircle');
+  switch (source) {
+    case 'lucide':
+      const LucideIcon = getLucideIcon(icon);
+      return <LucideIcon className={className} />;
+    case 'heroicons':
+      const HeroIcon = getHeroIcon(icon);
+      return <HeroIcon className={className} />;
+    default:
+      return <DefaultIcon className={className} />;
+  }
+}
