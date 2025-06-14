@@ -1,6 +1,6 @@
 // src/App.tsx
 import React, { useEffect } from 'react';
-import { UtilityIcon } from '@components/UtilityIcon';
+import { UtilityIcon } from './src/components/UtilityIcon';
 import { initializeIconEngine, resetIconEngine } from '@core/initEngine';
 
 const App = () => {
