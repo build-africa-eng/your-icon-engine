@@ -1,8 +1,7 @@
 // src/icons/adapters.ts
 import React from 'react';
-import { IconSource } from '../utils/types';
+import { IconSource } from '@utils/types';
 
-// Relying on library.ts for global Lucide, Heroicons, Tabler
 const pascalCaseCache = new Map<string, string>();
 function toPascalCase(str: string): string {
   if (pascalCaseCache.has(str)) return pascalCaseCache.get(str)!;
@@ -17,16 +16,20 @@ export interface IconLibraryAdapter {
   getIcon: (name: string) => React.ElementType;
 }
 
+const globalLucide = (typeof window !== 'undefined' && (window as any).Lucide) || undefined;
+const globalHeroicons = (typeof window !== 'undefined' && (window as any).Heroicons) || undefined;
+const globalTabler = (typeof window !== 'undefined' && (window as any).Tabler) || undefined;
+
 export const lucideAdapter: IconLibraryAdapter = {
   name: 'lucide',
-  getIcon: (name) => (Lucide as any)[toPascalCase(name)] || Lucide.HelpCircle,
+  getIcon: (name) => (globalLucide as any)?.[toPascalCase(name)] || (globalLucide as any)?.HelpCircle || (() => <span>?</span>),
 };
 
 export const heroiconsAdapter: IconLibraryAdapter = {
   name: 'heroicons',
   getIcon: (name) => {
     const iconName = `${toPascalCase(name)}Icon`;
-    return (Heroicons as any)[iconName] || Heroicons.QuestionMarkCircleIcon;
+    return (globalHeroicons as any)?.[iconName] || (globalHeroicons as any)?.QuestionMarkCircleIcon || (() => <span>?</span>);
   },
 };
 
@@ -34,7 +37,7 @@ export const tablerAdapter: IconLibraryAdapter = {
   name: 'tabler',
   getIcon: (name) => {
     const iconName = `Icon${toPascalCase(name)}`;
-    return (Tabler as any)[iconName] || Tabler.IconHelp;
+    return (globalTabler as any)?.[iconName] || (globalTabler as any)?.IconHelp || (() => <span>?</span>);
   },
 };
 
