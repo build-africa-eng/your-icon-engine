@@ -1,6 +1,6 @@
 // src/icons/library.ts
 import * as Lucide from 'lucide-react';
-import * as Heroicons from '@heroicons/react';
+import * as Heroicons from '@heroicons/react/24/outline';
 import * as Tabler from '@tabler/icons-react';
 
 // This is a "side-effect" import. It tells Vite/Rollup to keep these modules
