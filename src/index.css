@@ -4,10 +4,10 @@
 @tailwind utilities;
 
 /* Custom styles */
-body {
+/* body {
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: theme('colors.dark-gray');
   color: theme('colors.light-gray');
-}
+} */
