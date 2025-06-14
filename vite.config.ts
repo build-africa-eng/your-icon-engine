@@ -13,6 +13,13 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 1000, // Increase limit to reduce warnings (optional)
+    chunkSizeWarningLimit: 1000, // Adjust if needed
+  },
+  resolve: {
+    alias: {
+      '@components': '/src/components',
+      '@icons': '/src/icons',
+      '@utils': '/src/utils',
+    },
   },
 });
