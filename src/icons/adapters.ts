@@ -1,46 +1,32 @@
-// src/icons/adapters.ts
+l// src/icons/adapters.ts
 import React from 'react';
-import * as Lucide from 'lucide-react';
-import * as Heroicons from '@heroicons/react/24/outline';
-import * as Tabler from '@tabler/icons-react';
 import { IconSource } from '../utils/types';
 
-// Helper to convert kebab-case or snake_case to PascalCase
+// Relying on library.ts for global Lucide, Heroicons, Tabler
 const pascalCaseCache = new Map<string, string>();
 function toPascalCase(str: string): string {
-  // Return from cache if already computed
-  if (pascalCaseCache.has(str)) {
-    return pascalCaseCache.get(str)!;
-  }
-
-  // First, convert the string to camelCase (e.g., 'hello-world' -> 'helloWorld')
+  if (pascalCaseCache.has(str)) return pascalCaseCache.get(str)!;
   const camelCase = str.replace(/[-_]([a-z])/g, g => g[1].toUpperCase());
-
-  // Then, capitalize the first letter to get PascalCase (e.g., 'helloWorld' -> 'HelloWorld')
   const pascal = camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
-
   pascalCaseCache.set(str, pascal);
   return pascal;
 }
 
-// Defines the contract for any icon library adapter
 export interface IconLibraryAdapter {
   name: IconSource;
   getIcon: (name: string) => React.ElementType;
 }
 
-// --- Adapter Implementations ---
-
 export const lucideAdapter: IconLibraryAdapter = {
   name: 'lucide',
-  getIcon: (name) => Lucide[toPascalCase(name) as keyof typeof Lucide] || Lucide.HelpCircle,
+  getIcon: (name) => (Lucide as any)[toPascalCase(name)] || Lucide.HelpCircle,
 };
 
 export const heroiconsAdapter: IconLibraryAdapter = {
   name: 'heroicons',
   getIcon: (name) => {
     const iconName = `${toPascalCase(name)}Icon`;
-    return Heroicons[iconName as keyof typeof Heroicons] || Heroicons.QuestionMarkCircleIcon;
+    return (Heroicons as any)[iconName] || Heroicons.QuestionMarkCircleIcon;
   },
 };
 
@@ -48,11 +34,10 @@ export const tablerAdapter: IconLibraryAdapter = {
   name: 'tabler',
   getIcon: (name) => {
     const iconName = `Icon${toPascalCase(name)}`;
-    return Tabler[iconName as keyof typeof Tabler] || Tabler.IconHelp;
+    return (Tabler as any)[iconName] || Tabler.IconHelp;
   },
 };
 
-// A central map to hold all registered adapters for easy lookup
 export const iconAdapters = new Map<IconSource, IconLibraryAdapter>([
   [lucideAdapter.name, lucideAdapter],
   [heroiconsAdapter.name, heroiconsAdapter],
