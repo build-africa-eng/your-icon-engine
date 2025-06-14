@@ -28,6 +28,14 @@ class IconEngine {
         : rule.match.test(utility)
     ) || null;
   }
+
+  /**
+   * Clears all registered rules.
+   * Useful for testing, hot reloading, or engine re-initialization.
+   */
+  public clearRules(): void {
+    this.rules = [];
+  }
 }
 
 // Export a singleton instance of the engine
