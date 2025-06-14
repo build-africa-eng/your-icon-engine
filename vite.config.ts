@@ -1,8 +1,6 @@
+// vite.config.ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
-
-console.log('🔧 Starting Vite build configuration...');
 
 export default defineConfig({
   plugins: [react()],
@@ -20,11 +18,14 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@icons': path.resolve(__dirname, 'src/icons'),
-      '@utils': path.resolve(__dirname, 'src/utils'),
-      '@core': path.resolve(__dirname, 'src/core'),
+      '@components': './src/components',
+      '@icons': './src/icons',
+      '@utils': './src/utils',
+      '@core': './src/core',
     },
     extensions: ['.ts', '.tsx'],
+  },
+  optimizeDeps: {
+    exclude: ['lucide-react', '@heroicons/react', '@tabler/icons-react'], // Prevent optimization
   },
 });
