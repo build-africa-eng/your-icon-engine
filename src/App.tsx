@@ -10,8 +10,11 @@ const utilities = [
   'docker-mysql-db',
   'alert-danger',
   'an-unmatched-utility',
-  'flex', // Test Tabler icon
-  'p-4',  // Test Tabler icon
+  'flex',
+  'p-4',
+  'play-action',
+  'world-map',
+  'clock-time',
 ];
 
 const App = () => (
