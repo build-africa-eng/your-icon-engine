@@ -7,9 +7,12 @@ class IconEngine {
   /**
    * Registers one or more rule sets with the engine.
    * @param newRules - An array of UtilityRule objects.
+   * @throws Error if newRules is invalid (e.g., null or not an array).
    */
   public registerRules(newRules: UtilityRule[]): void {
-    // In a real-world library, you might add checks against duplicate rules
+    if (!Array.isArray(newRules)) {
+      throw new Error('Rules must be provided as an array');
+    }
     this.rules.push(...newRules);
   }
 
