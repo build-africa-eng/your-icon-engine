@@ -1,5 +1,5 @@
 // src/utils/customMatcher.ts
-import { IconSource, UtilityRule } from './match'; // Import types from main match
+import { IconSource, UtilityRule } from './matcher'; // Import types from main match
 
 // Custom utility rules for non-standard, project-specific cases
 export const customUtilityIconMap: UtilityRule[] = [
