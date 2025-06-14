@@ -1,4 +1,4 @@
-l// src/icons/adapters.ts
+// src/icons/adapters.ts
 import React from 'react';
 import { IconSource } from '../utils/types';
 
