@@ -1,5 +1,5 @@
 // src/utils/matcher.ts
-export type IconSource = 'lucide' | 'heroicons';
+export type IconSource = 'lucide' | 'heroicons' | 'tabler';
 
 export interface UtilityRule {
   match: string | RegExp;
@@ -8,23 +8,23 @@ export interface UtilityRule {
 }
 
 export const utilityIconMap: UtilityRule[] = [
-  { match: /^bg-/, icon: 'palette', source: 'lucide' }, // lucide:Palette
-  { match: /^text-/, icon: 'type', source: 'lucide' }, // lucide:Type
-  { match: /^border-/, icon: 'square', source: 'lucide' }, // lucide:Square
-  { match: /^flex/, icon: 'move-horizontal', source: 'lucide' }, // lucide:MoveHorizontal
-  { match: /^grid/, icon: 'grid', source: 'lucide' }, // lucide:Grid
-  { match: /^p-/, icon: 'rectangle-horizontal', source: 'lucide' }, // lucide:RectangleHorizontal
-  { match: /^m-/, icon: 'rectangle-vertical', source: 'lucide' }, // lucide:RectangleVertical
-  { match: /^w-/, icon: 'stretch-horizontal', source: 'lucide' }, // lucide:StretchHorizontal
-  { match: /^h-/, icon: 'stretch-vertical', source: 'lucide' }, // lucide:StretchVertical
-  { match: /^rounded-/, icon: 'app-window', source: 'lucide' }, // lucide:AppWindow
-  { match: /^shadow-/, icon: 'layers', source: 'lucide' }, // lucide:Layers
-  { match: /^items-/, icon: 'align-vertical-justify-center', source: 'lucide' }, // lucide:AlignVerticalJustifyCenter
-  { match: /^justify-/, icon: 'align-horizontal-justify-center', source: 'lucide' }, // lucide:AlignHorizontalJustifyCenter
-  { match: 'alert-danger', icon: 'alert-circle', source: 'lucide' }, // lucide:AlertCircle
-  { match: /^docker-node/, icon: 'server', source: 'lucide' }, // lucide:Server (generic for Node.js)
-  { match: /^docker-mysql/, icon: 'database', source: 'lucide' }, // lucide:Database (generic for MySQL)
-  { match: /^text-center$/, icon: 'adjustments-horizontal', source: 'heroicons' }, // heroicons:AdjustmentsHorizontal
+  { match: /^bg-/, icon: 'palette', source: 'lucide' },
+  { match: /^text-/, icon: 'type', source: 'lucide' },
+  { match: /^border-/, icon: 'square', source: 'lucide' },
+  { match: /^flex/, icon: 'move', source: 'tabler' }, // Tabler example
+  { match: /^grid/, icon: 'grid', source: 'lucide' },
+  { match: /^p-/, icon: 'rectangle', source: 'tabler' }, // Tabler example
+  { match: /^m-/, icon: 'rectangleVertical', source: 'tabler' }, // Tabler example
+  { match: /^w-/, icon: 'resizeHorizontal', source: 'tabler' }, // Tabler example
+  { match: /^h-/, icon: 'resizeVertical', source: 'tabler' }, // Tabler example
+  { match: /^rounded-/, icon: 'circle', source: 'tabler' }, // Tabler example
+  { match: /^shadow-/, icon: 'layers', source: 'lucide' },
+  { match: /^items-/, icon: 'alignBoxCenterMiddle', source: 'tabler' }, // Tabler example
+  { match: /^justify-/, icon: 'alignBoxCenterMiddle', source: 'tabler' }, // Tabler example
+  { match: 'alert-danger', icon: 'alertCircle', source: 'lucide' },
+  { match: /^docker-node/, icon: 'server', source: 'lucide' },
+  { match: /^docker-mysql/, icon: 'database', source: 'lucide' },
+  { match: /^text-center$/, icon: 'adjustmentsHorizontal', source: 'heroicons' },
 ];
 
 export function getMatchedIcon(utility: string): UtilityRule | null {
