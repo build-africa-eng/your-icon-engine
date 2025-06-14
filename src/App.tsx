@@ -1,14 +1,9 @@
 // src/App.tsx
 import React, { useEffect } from 'react';
 import { UtilityIcon } from './components/UtilityIcon';
+import { initializeIconEngine } from './core/initEngine'; 
 
-// Import the engine and the rule sets
-import { iconEngine } from './core/engine';
-import { standardUtilityIconMap } from './utils/matcher';
-import { customUtilityIconMap } from './utils/customMatcher';
-
-// A flag to ensure registration happens only once.
-let isEngineInitialized = false;
+// No need for the engine import or the local isEngineInitialized flag here anymore.
 
 const utilities = [
   'bg-blue-500', 'text-red-500', 'text-center', 'docker-node-service',
@@ -19,13 +14,7 @@ const utilities = [
 const App = () => {
   // Use useEffect to initialize the engine on app startup.
   useEffect(() => {
-    if (!isEngineInitialized) {
-      console.log("Initializing Icon Engine...");
-      // Register all the rule "plugins"
-      iconEngine.registerRules(standardUtilityIconMap);
-      iconEngine.registerRules(customUtilityIconMap);
-      isEngineInitialized = true;
-    }
+    initializeIconEngine(); // Call the centralized initialization function
   }, []);
 
   return (
