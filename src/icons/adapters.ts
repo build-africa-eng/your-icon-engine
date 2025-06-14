@@ -6,13 +6,12 @@ import * as Tabler from '@tabler/icons-react';
 import { IconSource } from '../utils/types';
 
 // Helper to convert kebab-case or snake_case to PascalCase
-// Caching improves performance by avoiding re-computation for the same strings.
 const pascalCaseCache = new Map<string, string>();
 function toPascalCase(str: string): string {
   if (pascalCaseCache.has(str)) return pascalCaseCache.get(str)!;
   const pascal = str
     .replace(/[-_]([a-z])/g, g => g[1].toUpperCase())
-    .replace(/(^\w|-\w)/g, g => g.replace(/^-/, '').toUpperCase());
+    .replace(/(^\w)/g, g => g.toUpperCase());
   pascalCaseCache.set(str, pascal);
   return pascal;
 }
