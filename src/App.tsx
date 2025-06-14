@@ -1,16 +1,13 @@
 // src/App.tsx
 import React, { useEffect } from 'react';
-import { UtilityIcon } from './components/UtilityIcon';
-import { initializeIconEngine, resetIconEngine } from './core/initEngine';
+import { UtilityIcon } from '@components/UtilityIcon';
+import { initializeIconEngine, resetIconEngine } from '@core/initEngine';
 
-// A flag to ensure registration happens only once (managed by initEngine now)
 const App = () => {
   useEffect(() => {
-    initializeIconEngine(); // Initialize on app startup
-    return () => {
-      // Optional: Reset on unmount for hot reload testing
-      resetIconEngine();
-    };
+    console.log('Mounting App, initializing engine...');
+    initializeIconEngine();
+    return () => resetIconEngine();
   }, []);
 
   const utilities = [
