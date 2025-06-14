@@ -10,6 +10,8 @@ const utilities = [
   'docker-mysql-db',
   'alert-danger',
   'an-unmatched-utility',
+  'flex', // Test Tabler icon
+  'p-4',  // Test Tabler icon
 ];
 
 const App = () => (
@@ -19,7 +21,7 @@ const App = () => (
         <h1 className="text-4xl md:text-4.5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-custom-teal to-custom-purple">
           Utility Icon Engine
         </h1>
-        <p className="mt-4 text-base md:text-lg text-gray-400">Dynamically rendering icons from Lucide and Heroicons.</p>
+        <p className="mt-4 text-base md:text-lg text-gray-400">Dynamically rendering icons from Lucide, Heroicons, and Tabler.</p>
       </header>
       <div className="bg-medium-gray border border-medium-gray rounded-xl shadow-custom-lg p-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -42,7 +44,7 @@ const App = () => (
         </div>
       </div>
       <footer className="text-center mt-16 text-gray-500">
-        <p>Built with React, Lucide, Heroicons, and a custom matching engine.</p>
+        <p>Built with React, Lucide, Heroicons, Tabler, and a custom matching engine.</p>
       </footer>
     </div>
   </div>
