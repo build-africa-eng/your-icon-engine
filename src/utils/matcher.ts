@@ -1,9 +1,8 @@
 // src/utils/matcher.ts
-import { UtilityRule } from './types'; // Import types from the new types file
-import { customUtilityIconMap } from './customMatcher'; // Corrected import path
+import { UtilityRule } from './types';
 
-// Standard utility rules based on Tailwind classes
-const standardUtilityIconMap: UtilityRule[] = [
+// Standard utility rules, now just a data array
+export const standardUtilityIconMap: UtilityRule[] = [
   { match: /^bg-/, icon: 'palette', source: 'lucide' },
   { match: /^text-/, icon: 'type', source: 'lucide' },
   { match: /^border-/, icon: 'square', source: 'lucide' },
@@ -22,12 +21,3 @@ const standardUtilityIconMap: UtilityRule[] = [
   { match: /^docker-mysql/, icon: 'database', source: 'lucide' },
   { match: /^text-center$/, icon: 'adjustmentsHorizontal', source: 'heroicons' },
 ];
-
-// Combine standard and custom rules
-const utilityIconMap: UtilityRule[] = [...standardUtilityIconMap, ...customUtilityIconMap];
-
-export function getMatchedIcon(utility: string): UtilityRule | null {
-  return utilityIconMap.find(rule =>
-    typeof rule.match === 'string' ? rule.match === utility : rule.match.test(utility)
-  ) || null;
-}
