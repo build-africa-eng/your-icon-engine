@@ -1,11 +1,6 @@
 // src/utils/matcher.ts
-export type IconSource = 'lucide' | 'heroicons' | 'tabler';
-
-export interface UtilityRule {
-  match: string | RegExp;
-  icon: string;
-  source: IconSource;
-}
+import { UtilityRule } from './types'; // Import types from the new types file
+import { customUtilityIconMap } from './customMatcher'; // Corrected import path
 
 // Standard utility rules based on Tailwind classes
 const standardUtilityIconMap: UtilityRule[] = [
@@ -27,9 +22,6 @@ const standardUtilityIconMap: UtilityRule[] = [
   { match: /^docker-mysql/, icon: 'database', source: 'lucide' },
   { match: /^text-center$/, icon: 'adjustmentsHorizontal', source: 'heroicons' },
 ];
-
-// Import non-standard custom rules
-import { customUtilityIconMap } from './customMatch';
 
 // Combine standard and custom rules
 const utilityIconMap: UtilityRule[] = [...standardUtilityIconMap, ...customUtilityIconMap];
