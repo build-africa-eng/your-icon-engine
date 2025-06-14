@@ -7,7 +7,8 @@ export interface UtilityRule {
   source: IconSource;
 }
 
-export const utilityIconMap: UtilityRule[] = [
+// Standard utility rules based on Tailwind classes
+const standardUtilityIconMap: UtilityRule[] = [
   { match: /^bg-/, icon: 'palette', source: 'lucide' },
   { match: /^text-/, icon: 'type', source: 'lucide' },
   { match: /^border-/, icon: 'square', source: 'lucide' },
@@ -24,13 +25,17 @@ export const utilityIconMap: UtilityRule[] = [
   { match: 'alert-danger', icon: 'alertCircle', source: 'lucide' },
   { match: /^docker-node/, icon: 'server', source: 'lucide' },
   { match: /^docker-mysql/, icon: 'database', source: 'lucide' },
-  { match: /^text-center$/, icon: 'adjustmentsHorizontal', source: 'heroicons' }, // Matches Heroicons naming
+  { match: /^text-center$/, icon: 'adjustmentsHorizontal', source: 'heroicons' },
 ];
 
+// Import non-standard custom rules
+import { customUtilityIconMap } from './customMatch';
+
+// Combine standard and custom rules
+const utilityIconMap: UtilityRule[] = [...standardUtilityIconMap, ...customUtilityIconMap];
+
 export function getMatchedIcon(utility: string): UtilityRule | null {
-  for (const rule of utilityIconMap) {
-    if (typeof rule.match === 'string' && rule.match === utility) return rule;
-    if (rule.match instanceof RegExp && rule.match.test(utility)) return rule;
-  }
-  return null;
+  return utilityIconMap.find(rule =>
+    typeof rule.match === 'string' ? rule.match === utility : rule.match.test(utility)
+  ) || null;
 }
