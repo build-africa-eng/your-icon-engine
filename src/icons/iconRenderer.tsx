@@ -13,14 +13,27 @@ interface IconRendererProps {
 
 export function IconRenderer({ icon, source, className = 'w-5 h-5' }: IconRendererProps) {
   const DefaultIcon = getLucideIcon('HelpCircle');
+
+  let IconComponent: React.ElementType | undefined;
+
   switch (source) {
     case 'lucide':
-      return <getLucideIcon icon={icon} className={className} />;
+      IconComponent = getLucideIcon(icon);
+      break;
     case 'heroicons':
-      return <getHeroIcon icon={icon} className={className} />;
+      IconComponent = getHeroIcon(icon);
+      break;
     case 'tabler':
-      return <getTablerIcon icon={icon} className={className} />;
+      IconComponent = getTablerIcon(icon);
+      break;
     default:
-      return <DefaultIcon className={className} />;
+      IconComponent = DefaultIcon;
   }
+
+  if (!IconComponent) {
+    // Fallback to the default icon if the component is still not found
+    IconComponent = DefaultIcon;
+  }
+
+  return <IconComponent className={className} />;
 }
