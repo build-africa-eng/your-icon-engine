@@ -1,4 +1,3 @@
-// src/icons/adapters.ts
 import React from 'react';
 import { IconSource } from '@utils/types';
 
@@ -16,20 +15,27 @@ export interface IconLibraryAdapter {
   getIcon: (name: string) => React.ElementType;
 }
 
-const globalLucide = (typeof window !== 'undefined' && (window as any).Lucide) || undefined;
-const globalHeroicons = (typeof window !== 'undefined' && (window as any).Heroicons) || undefined;
-const globalTabler = (typeof window !== 'undefined' && (window as any).Tabler) || undefined;
+const globalLucide = typeof window !== 'undefined' ? (window as any).Lucide : undefined;
+const globalHeroicons = typeof window !== 'undefined' ? (window as any).Heroicons : undefined;
+const globalTabler = typeof window !== 'undefined' ? (window as any).Tabler : undefined;
 
 export const lucideAdapter: IconLibraryAdapter = {
   name: 'lucide',
-  getIcon: (name) => (globalLucide as any)?.[toPascalCase(name)] || (globalLucide as any)?.HelpCircle || (() => <span>?</span>),
+  getIcon: (name) => {
+    const iconName = toPascalCase(name);
+    const fallback = globalLucide && globalLucide.HelpCircle;
+    if (globalLucide && globalLucide[iconName]) return globalLucide[iconName];
+    return fallback || (() => <span>?</span>);
+  },
 };
 
 export const heroiconsAdapter: IconLibraryAdapter = {
   name: 'heroicons',
   getIcon: (name) => {
     const iconName = `${toPascalCase(name)}Icon`;
-    return (globalHeroicons as any)?.[iconName] || (globalHeroicons as any)?.QuestionMarkCircleIcon || (() => <span>?</span>);
+    const fallback = globalHeroicons && globalHeroicons.QuestionMarkCircleIcon;
+    if (globalHeroicons && globalHeroicons[iconName]) return globalHeroicons[iconName];
+    return fallback || (() => <span>?</span>);
   },
 };
 
@@ -37,7 +43,9 @@ export const tablerAdapter: IconLibraryAdapter = {
   name: 'tabler',
   getIcon: (name) => {
     const iconName = `Icon${toPascalCase(name)}`;
-    return (globalTabler as any)?.[iconName] || (globalTabler as any)?.IconHelp || (() => <span>?</span>);
+    const fallback = globalTabler && globalTabler.IconHelp;
+    if (globalTabler && globalTabler[iconName]) return globalTabler[iconName];
+    return fallback || (() => <span>?</span>);
   },
 };
 
