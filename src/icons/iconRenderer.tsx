@@ -2,7 +2,8 @@
 import React from 'react';
 import { getLucideIcon } from './lucide';
 import { getHeroIcon } from './heroicons';
-import { IconSource } from '../utils/matcher';
+import { getTablerIcon } from './tabler';
+import { IconSource } from '@utils/matcher';
 
 interface IconRendererProps {
   icon: string;
@@ -14,11 +15,11 @@ export function IconRenderer({ icon, source, className = 'w-5 h-5' }: IconRender
   const DefaultIcon = getLucideIcon('HelpCircle');
   switch (source) {
     case 'lucide':
-      const LucideIcon = getLucideIcon(icon);
-      return <LucideIcon className={className} />;
+      return <getLucideIcon icon={icon} className={className} />;
     case 'heroicons':
-      const HeroIcon = getHeroIcon(icon);
-      return <HeroIcon className={className} />;
+      return <getHeroIcon icon={icon} className={className} />;
+    case 'tabler':
+      return <getTablerIcon icon={icon} className={className} />;
     default:
       return <DefaultIcon className={className} />;
   }
