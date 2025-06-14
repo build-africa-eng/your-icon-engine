@@ -1,7 +1,7 @@
 // src/components/UtilityIcon.tsx
 import React from 'react';
-import { IconRenderer } from '../icons/IconRenderer';
-import { iconEngine } from '../core/engine';
+import { IconRenderer } from '@icons/IconRenderer'; 
+import { iconEngine } from '@core/engine'; 
 
 interface UtilityIconProps {
   utility: string;
