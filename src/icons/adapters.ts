@@ -8,10 +8,17 @@ import { IconSource } from '../utils/types';
 // Helper to convert kebab-case or snake_case to PascalCase
 const pascalCaseCache = new Map<string, string>();
 function toPascalCase(str: string): string {
-  if (pascalCaseCache.has(str)) return pascalCaseCache.get(str)!;
-  const pascal = str
-    .replace(/[-_]([a-z])/g, g => g[1].toUpperCase())
-    .replace(/(^\w)/g, g => g.toUpperCase());
+  // Return from cache if already computed
+  if (pascalCaseCache.has(str)) {
+    return pascalCaseCache.get(str)!;
+  }
+
+  // First, convert the string to camelCase (e.g., 'hello-world' -> 'helloWorld')
+  const camelCase = str.replace(/[-_]([a-z])/g, g => g[1].toUpperCase());
+
+  // Then, capitalize the first letter to get PascalCase (e.g., 'helloWorld' -> 'HelloWorld')
+  const pascal = camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
+
   pascalCaseCache.set(str, pascal);
   return pascal;
 }
