@@ -3,10 +3,14 @@ import * as Lucide from 'lucide-react';
 import * as Heroicons from '@heroicons/react/24/outline';
 import * as Tabler from '@tabler/icons-react';
 
-// This is a "side-effect" import. It tells Vite/Rollup to keep these modules
-// in the bundle. We don't need to export or use them here.
-// The objects are now available in the global scope of the bundle for your adapters to find.
+// Explicitly attach to global scope
+if (typeof window !== 'undefined') {
+  (window as any).Lucide = Lucide;
+  (window as any).Heroicons = Heroicons;
+  (window as any).Tabler = Tabler;
+}
+
+// This is a "side-effect" import. The imports are preserved for bundling.
 if (false) {
-  // This block will be removed by minifiers, but the imports will be preserved.
   console.log(Lucide, Heroicons, Tabler);
 }
