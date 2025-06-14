@@ -1,1 +1,0 @@
-export const DockerIconMap: { [key: string]: string } = { "docker-node": "https://raw.githubusercontent.com/docker-library/docs/master/node/logo.png" };
