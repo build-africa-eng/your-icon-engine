@@ -1,9 +1,7 @@
 // src/icons/IconRenderer.tsx
 import React from 'react';
-import { getLucideIcon } from './lucide';
-import { getHeroIcon } from './heroicons';
-import { getTablerIcon } from './tabler';
-import { IconSource } from '@utils/matcher';
+import { iconAdapters, lucideAdapter } from './adapters';
+import { IconSource } from '../utils/types';
 
 interface IconRendererProps {
   icon: string;
@@ -12,28 +10,11 @@ interface IconRendererProps {
 }
 
 export function IconRenderer({ icon, source, className = 'w-5 h-5' }: IconRendererProps) {
-  const DefaultIcon = getLucideIcon('HelpCircle');
+  // Get the correct adapter from the map, defaulting to Lucide
+  const adapter = iconAdapters.get(source) || lucideAdapter;
 
-  let IconComponent: React.ElementType | undefined;
-
-  switch (source) {
-    case 'lucide':
-      IconComponent = getLucideIcon(icon);
-      break;
-    case 'heroicons':
-      IconComponent = getHeroIcon(icon);
-      break;
-    case 'tabler':
-      IconComponent = getTablerIcon(icon);
-      break;
-    default:
-      IconComponent = DefaultIcon;
-  }
-
-  if (!IconComponent) {
-    // Fallback to the default icon if the component is still not found
-    IconComponent = DefaultIcon;
-  }
+  // Ask the adapter for the component
+  const IconComponent = adapter.getIcon(icon);
 
   return <IconComponent className={className} />;
 }
