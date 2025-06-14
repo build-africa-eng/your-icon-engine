@@ -8,7 +8,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // This splits each icon library into its own file
           if (id.includes('lucide-react')) return 'lucide';
           if (id.includes('@heroicons/react')) return 'heroicons';
           if (id.includes('@tabler/icons-react')) return 'tabler';
@@ -24,5 +23,6 @@ export default defineConfig({
       '@utils': './src/utils',
       '@core': './src/core',
     },
+    extensions: ['.ts', '.tsx'], // Ensure .tsx resolution
   },
 });
