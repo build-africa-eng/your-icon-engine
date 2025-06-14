@@ -1,21 +1,23 @@
 // src/App.tsx
 import React, { useEffect } from 'react';
 import { UtilityIcon } from './components/UtilityIcon';
-import { initializeIconEngine } from './core/initEngine'; 
+import { initializeIconEngine, resetIconEngine } from './core/initEngine';
 
-// No need for the engine import or the local isEngineInitialized flag here anymore.
-
-const utilities = [
-  'bg-blue-500', 'text-red-500', 'text-center', 'docker-node-service',
-  'docker-mysql-db', 'alert-danger', 'flex', 'p-4', 'play-action',
-  'world-map', 'clock-time', 'an-unmatched-utility'
-];
-
+// A flag to ensure registration happens only once (managed by initEngine now)
 const App = () => {
-  // Use useEffect to initialize the engine on app startup.
   useEffect(() => {
-    initializeIconEngine(); // Call the centralized initialization function
+    initializeIconEngine(); // Initialize on app startup
+    return () => {
+      // Optional: Reset on unmount for hot reload testing
+      resetIconEngine();
+    };
   }, []);
+
+  const utilities = [
+    'bg-blue-500', 'text-red-500', 'text-center', 'docker-node-service',
+    'docker-mysql-db', 'alert-danger', 'flex', 'p-4', 'play-action',
+    'world-map', 'clock-time', 'an-unmatched-utility',
+  ];
 
   return (
     <div className="bg-dark-gray text-light-gray min-h-screen p-12 font-sans">
