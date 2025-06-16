@@ -62,4 +62,4 @@ export const iconAdapters = new Map<IconSource, IconLibraryAdapter>([
   [lucideAdapter.name, lucideAdapter],
   [heroiconsAdapter.name, heroiconsAdapter],
   [tablerAdapter.name, tablerAdapter],
-]
+]);
