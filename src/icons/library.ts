@@ -1,12 +1,9 @@
-// This file's only purpose is to be imported for its side effects.
-// It imports the icon libraries so that Vite's build process knows
-// they are being used and does not remove them via tree-shaking.
+l// src/icons/library.ts
 
-import * as Lucide from 'lucide-react';
-import * as Heroicons from '@heroicons/react/24/outline';
-import * as Tabler from '@tabler/icons-react';
+// This file uses ES module re-exporting to create a single, static
+// entry point for all icon libraries. This ensures the bundler
+// includes them in the final build.
 
-if (false) {
-  // This block is removed by minifiers, but the imports are preserved.
-  console.log(Lucide, Heroicons, Tabler);
-}
+export * as Lucide from 'lucide-react';
+export * as Heroicons from '@heroicons/react/24/outline';
+export * as Tabler from '@tabler/icons-react';
