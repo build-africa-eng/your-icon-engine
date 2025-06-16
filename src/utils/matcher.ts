@@ -1,23 +1,21 @@
-// src/utils/matcher.ts
 import { UtilityRule } from './types';
 
-// Standard utility rules, now just a data array
 export const standardUtilityIconMap: UtilityRule[] = [
   { match: /^bg-/, icon: 'palette', source: 'lucide' },
   { match: /^text-/, icon: 'type', source: 'lucide' },
   { match: /^border-/, icon: 'square', source: 'lucide' },
   { match: /^flex/, icon: 'move', source: 'tabler' },
-  { match: /^grid/, icon: 'grid', source: 'lucide' },
-  { match: /^p-/, icon: 'rectangle', source: 'tabler' },
-  { match: /^m-/, icon: 'rectangleVertical', source: 'tabler' },
-  { match: /^w-/, icon: 'resizeHorizontal', source: 'tabler' },
-  { match: /^h-/, icon: 'resizeVertical', source: 'tabler' },
-  { match: /^rounded-/, icon: 'circle', source: 'tabler' },
+  { match: /^grid/, icon: 'layout-grid', source: 'lucide' },
+  { match: /^p-/, icon: 'box-padding', source: 'tabler' },
+  { match: /^m-/, icon: 'box-margin', source: 'tabler' },
+  { match: /^w-/, icon: 'arrow-autofit-width', source: 'tabler' },
+  { match: /^h-/, icon: 'arrow-autofit-height', source: 'tabler' },
+  { match: /^rounded-/, icon: 'radius-top-left', source: 'tabler' },
   { match: /^shadow-/, icon: 'layers', source: 'lucide' },
-  { match: /^items-/, icon: 'alignBoxCenterMiddle', source: 'tabler' },
-  { match: /^justify-/, icon: 'alignBoxCenterMiddle', source: 'tabler' },
-  { match: 'alert-danger', icon: 'alertCircle', source: 'lucide' },
+  { match: /^items-/, icon: 'align-box-center-middle', source: 'tabler' },
+  { match: /^justify-/, icon: 'align-box-center-middle', source: 'tabler' },
+  { match: 'alert-danger', icon: 'alert-circle', source: 'lucide' },
   { match: /^docker-node/, icon: 'server', source: 'lucide' },
   { match: /^docker-mysql/, icon: 'database', source: 'lucide' },
-  { match: /^text-center$/, icon: 'adjustmentsHorizontal', source: 'heroicons' },
+  { match: /^text-center$/, icon: 'align-center', source: 'lucide' },
 ];
