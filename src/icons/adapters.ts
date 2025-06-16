@@ -1,21 +1,19 @@
 // src/icons/adapters.ts
 import React from 'react';
-import * as Lucide from 'lucide-react';
-import * as Heroicons from '@heroicons/react/24/outline';
-import * as Tabler from '@tabler/icons-react';
+// Import from our new library file!
+import { Lucide, Heroicons, Tabler } from './library';
 import { IconSource } from '../utils/types';
 
 // --- Type Definitions ---
 type IconMap = { [key: string]: React.ElementType };
 
 // --- Icon Maps ---
-// By importing everything with `* as ...` and spreading it into a new object,
-// we create a static dependency that Vite's bundler can see. This prevents
-// the icons from being tree-shaken in the production build.
-
+// Now that we import from our library file, these maps are guaranteed
+// to be populated with all the icons in the final build.
 const lucideIconMap: IconMap = { ...Lucide };
 const heroiconsMap: IconMap = { ...Heroicons };
 const tablerMap: IconMap = { ...Tabler };
+
 
 // Helper to convert kebab-case or snake_case to PascalCase.
 const pascalCaseCache = new Map<string, string>();
@@ -34,13 +32,12 @@ export interface IconLibraryAdapter {
   getIcon: (name: string) => React.ElementType;
 }
 
-// --- Adapter Implementations ---
+// --- Adapter Implementations (No changes here, but shown for completeness) ---
 
 export const lucideAdapter: IconLibraryAdapter = {
   name: 'lucide',
   getIcon: (name) => {
     const iconName = toPascalCase(name);
-    // Look up the icon in our map instead of the dynamic module import
     return lucideIconMap[iconName] || lucideIconMap.HelpCircle;
   },
 };
