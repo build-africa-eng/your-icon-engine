@@ -1,20 +1,18 @@
-// src/App.tsx
 import React, { useEffect } from 'react';
 import { UtilityIcon } from '@components/UtilityIcon';
-import { initializeIconEngine, resetIconEngine } from '@core/initEngine';
+import { initializeIconEngine } from '@core/initEngine';
+
+const utilities = [
+  'bg-blue-500', 'text-red-500', 'text-center', 'docker-node-service',
+  'docker-mysql-db', 'alert-danger', 'flex', 'p-4', 'play-action',
+  'world-map', 'clock-time', 'an-unmatched-utility'
+];
 
 const App = () => {
   useEffect(() => {
-    console.log('Mounting App, initializing engine...');
+    // We only need to initialize the engine once when the app loads.
     initializeIconEngine();
-    return () => resetIconEngine();
   }, []);
-
-  const utilities = [
-    'bg-blue-500', 'text-red-500', 'text-center', 'docker-node-service',
-    'docker-mysql-db', 'alert-danger', 'flex', 'p-4', 'play-action',
-    'world-map', 'clock-time', 'an-unmatched-utility',
-  ];
 
   return (
     <div className="bg-dark-gray text-light-gray min-h-screen p-12 font-sans">
@@ -32,7 +30,7 @@ const App = () => {
             {utilities.map((utility) => (
               <div
                 key={utility}
-                className="flex items-center justify-between p-3 bg-gray-600/50 rounded-lg border border-medium-gray hover:bg-amber-400/20 transition-colors duration-200"
+                className="flex items-center justify-between p-3 bg-gray-600/50 rounded-lg border-medium-gray hover:bg-amber-400/20 transition-colors duration-200"
               >
                 <code className="text-sm font-mono text-cyan-300 bg-gray-500 px-2 py-1 rounded">
                   {utility}
