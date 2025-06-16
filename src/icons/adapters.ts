@@ -1,18 +1,17 @@
 // src/icons/adapters.ts
 import React from 'react';
-// Import from our new library file!
-import { Lucide, Heroicons, Tabler } from './library';
+// Import our library file as a single, all-encompassing namespace
+import * as AllIcons from './library';
 import { IconSource } from '../utils/types';
 
 // --- Type Definitions ---
 type IconMap = { [key: string]: React.ElementType };
 
 // --- Icon Maps ---
-// Now that we import from our library file, these maps are guaranteed
-// to be populated with all the icons in the final build.
-const lucideIconMap: IconMap = { ...Lucide };
-const heroiconsMap: IconMap = { ...Heroicons };
-const tablerMap: IconMap = { ...Tabler };
+// We now access each icon set through the `AllIcons` namespace.
+const lucideIconMap: IconMap = { ...AllIcons.Lucide };
+const heroiconsMap: IconMap = { ...AllIcons.Heroicons };
+const tablerMap: IconMap = { ...AllIcons.Tabler };
 
 
 // Helper to convert kebab-case or snake_case to PascalCase.
@@ -29,10 +28,10 @@ function toPascalCase(str: string): string {
 // Defines the contract for any icon library adapter
 export interface IconLibraryAdapter {
   name: IconSource;
-  getIcon: (name: string) => React.ElementType;
+  getIcon: (name:string) => React.ElementType;
 }
 
-// --- Adapter Implementations (No changes here, but shown for completeness) ---
+// --- Adapter Implementations ---
 
 export const lucideAdapter: IconLibraryAdapter = {
   name: 'lucide',
@@ -63,4 +62,4 @@ export const iconAdapters = new Map<IconSource, IconLibraryAdapter>([
   [lucideAdapter.name, lucideAdapter],
   [heroiconsAdapter.name, heroiconsAdapter],
   [tablerAdapter.name, tablerAdapter],
-]);
+]
