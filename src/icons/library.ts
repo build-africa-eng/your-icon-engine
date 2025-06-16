@@ -1,16 +1,12 @@
-// src/icons/library.ts
+// This file's only purpose is to be imported for its side effects.
+// It imports the icon libraries so that Vite's build process knows
+// they are being used and does not remove them via tree-shaking.
+
 import * as Lucide from 'lucide-react';
 import * as Heroicons from '@heroicons/react/24/outline';
 import * as Tabler from '@tabler/icons-react';
 
-// Explicitly attach to global scope
-if (typeof window !== 'undefined') {
-  (window as any).Lucide = Lucide;
-  (window as any).Heroicons = Heroicons;
-  (window as any).Tabler = Tabler;
-}
-
-// This is a "side-effect" import. The imports are preserved for bundling.
 if (false) {
+  // This block is removed by minifiers, but the imports are preserved.
   console.log(Lucide, Heroicons, Tabler);
 }
