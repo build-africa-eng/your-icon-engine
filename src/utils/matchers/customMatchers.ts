@@ -1,8 +1,15 @@
+// src/matchers/customMatchers.ts
 import { UtilityRule } from '../types';
 
 export const customMatchers: UtilityRule[] = [
-  { match: /^alert-danger$/, icon: 'alert-circle', source: 'lucide' },
-  { match: /^play-action$/, icon: 'player-play', source: 'tabler' },
-  { match: /^world-map$/, icon: 'world', source: 'tabler' },
-  { match: /^clock-time$/, icon: 'clock', source: 'tabler' },
+  { match: /^alert$/, icon: 'AlertTriangle', source: 'lucide' },
+  { match: /^error$/, icon: 'Bug', source: 'lucide' },
+  { match: /^success$/, icon: 'CircleCheck', source: 'tabler' },
+  { match: /^warning$/, icon: 'AlertCircle', source: 'lucide' },
+  { match: /^info$/, icon: 'Info', source: 'lucide' },
+  { match: /^check$/, icon: 'Check', source: 'lucide' },
+  { match: /^search$/, icon: 'Search', source: 'lucide' },
+  { match: /^loading$/, icon: 'Loader2', source: 'lucide' },
+  { match: /^settings$/, icon: 'Settings', source: 'lucide' },
+  { match: /^user$/, icon: 'User', source: 'lucide' },
 ];
