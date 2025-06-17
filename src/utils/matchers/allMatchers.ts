@@ -10,7 +10,8 @@ import { customMatchers } from './customMatchers';
 import { animation matchers } from './animationMatchers';
 import { interactivityMatchers } from './interactivityMatchers';
 import { flexboxMatchers } from './flexboxMatchers.ts';
-import { gridMatchers } from './gridMatchers'
+import { gridMatchers } from './gridMatchers';
+import {typographyMatchers } from './typographyMatchers':
 
 export const allUtilityIconMap: UtilityRule[] = [
   ...customMatchers,
@@ -25,4 +26,5 @@ export const allUtilityIconMap: UtilityRule[] = [
   ...interactivityMatchers,
   ...flexboxMatchers,
   ...gridMatchers,
+  ...typographyMatchers,
 ];
