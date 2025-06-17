@@ -1,7 +1,20 @@
+// src/core/engine.ts
 import { UtilityRule } from '@utils/types';
 
 class IconEngine {
   private rules: UtilityRule[] = [];
+  // Add a property to hold the icon libraries
+  private iconLibraries: Record<string, any> = {};
+
+  // Add a new method to register the libraries
+  public registerLibraries(libs: Record<string, any>): void {
+    this.iconLibraries = libs;
+  }
+
+  // Add a getter to allow adapters to access the libraries
+  public getLibraries(): Record<string, any> {
+    return this.iconLibraries;
+  }
 
   public registerRules(newRules: UtilityRule[]): void {
     if (!Array.isArray(newRules)) {
