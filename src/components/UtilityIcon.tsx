@@ -1,13 +1,16 @@
+// src/components/UtilityIcon.tsx
 import React from 'react';
 import { iconEngine } from '@core/engine';
 import { UtilityRule } from '@utils/types';
+import { IconRenderer } from '@icons/IconRenderer';
 
-interface UtilityCardProps {
+interface UtilityIconProps {
   utility: string;
   showDebug?: boolean;
+  className?: string;
 }
 
-export const UtilityIcon: React.FC<UtilityIconProps> = ({ utility, showDebug }) => {
+export const UtilityIcon: React.FC<UtilityIconProps> = ({ utility, showDebug, className }) => {
   const matched: UtilityRule | null = iconEngine.getMatchedIcon(utility);
 
   const source = matched?.source ?? 'lucide';
@@ -15,14 +18,14 @@ export const UtilityIcon: React.FC<UtilityIconProps> = ({ utility, showDebug }) 
   const fallbackUsed = matched === null;
 
   return (
-    <div className="flex flex-col gap-2 p-3 bg-gray-600/50 rounded-lg border border-medium-gray hover:bg-amber-400/10 transition-colors duration-200">
+    <div className={`flex flex-col gap-2 p-3 bg-gray-600/50 rounded-lg border border-medium-gray hover:bg-amber-400/10 transition-colors duration-200 ${className ?? ''}`}>
       <code className="text-sm font-mono text-cyan-300 bg-gray-500 px-2 py-1 rounded">
         {utility}
       </code>
 
       <div className="flex items-center justify-between">
         <span className="text-gray-400 text-xs">ICON</span>
-        <UtilityIcon utility={utility} className="w-5 h-5 text-custom-teal" />
+        <IconRenderer icon={iconName} source={source} className="w-5 h-5 text-custom-teal" />
       </div>
 
       {showDebug && (
