@@ -1,4 +1,4 @@
-import { UtilityRule } from './types';
+import { UtilityRule } from '../types';
 
 export const customUtilityIconMap: UtilityRule[] = [
   { match: /^play-action$/, icon: 'player-play', source: 'tabler' },
