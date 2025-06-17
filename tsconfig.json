@@ -11,18 +11,21 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-  "@components/*": ["src/components/*"],
-  "@icons/*": ["src/icons/*"],
-  "@utils/*": ["src/utils/*"],
-  "@pages/*": ["src/pages/*"],
-  "@core/*": ["src/core/*"]
-     },
+      "@components/*": ["src/components/*"],
+      "@icons/*": ["src/icons/*"],
+      "@utils/*": ["src/utils/*"],
+      "@pages/*": ["src/pages/*"],
+      "@core/*": ["src/core/*"]
+    },
     "outDir": "./dist",
     "rootDir": "./src",
     "sourceMap": true,
-    "types": ["node", "react", "react-dom","react-router-dom"],
-    "allowSyntheticDefaultImports": true
+    "types": ["node", "react", "react-dom", "react-router-dom", "vite/client"],
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "allowJs": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "vite.config.ts"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]
 }
