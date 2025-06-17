@@ -3,8 +3,9 @@ import * as Lucide from 'lucide-react';
 import * as Heroicons from '@heroicons/react/24/outline';
 import * as Tabler from '@tabler/icons-react';
 
-// Export all the libraries in a single, accessible object.
-export const AllIconLibraries = {
+import { IconLibrary } from '@utils/types';
+
+export const AllIconLibraries: Record<IconSource, IconLibrary> = {
   lucide: Lucide,
   heroicons: Heroicons,
   tabler: Tabler,
