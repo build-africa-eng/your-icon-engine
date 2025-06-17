@@ -3,22 +3,21 @@ import { UtilityRule } from '@utils/types';
 
 class IconEngine {
   private rules: UtilityRule[] = [];
-  // Add a property to hold the icon libraries
   private iconLibraries: Record<string, any> = {};
 
-  // Add a new method to register the libraries
   public registerLibraries(libs: Record<string, any>): void {
     this.iconLibraries = libs;
   }
 
-  // Add a getter to allow adapters to access the libraries
   public getLibraries(): Record<string, any> {
     return this.iconLibraries;
   }
 
   public registerRules(newRules: UtilityRule[]): void {
-    if (!Array.isArray(newRules)) {
-      throw new Error('Rules must be provided as an array');
+    for (const rule of newRules) {
+      if (this.rules.some(r => r.match.toString() === rule.match.toString())) {
+        console.warn('Duplicate or overlapping rule detected:', rule.match);
+      }
     }
     this.rules.push(...newRules);
   }
@@ -37,6 +36,10 @@ class IconEngine {
 
   public getRuleCount(): number {
     return this.rules.length;
+  }
+
+  public getRules(): UtilityRule[] {
+    return this.rules;
   }
 }
 
