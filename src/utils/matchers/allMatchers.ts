@@ -1,5 +1,5 @@
 // src/utils/allMatchers.ts
-import { UtilityRule } from './types';
+import { UtilityRule } from '../types';
 import { standardUtilityIconMap } from './matcher';
 import { customUtilityIconMap } from './customMatcher';
 import { specialUtilityIconMap } from './specialMatcher';
