@@ -2,12 +2,6 @@ import { UtilityRule } from './types';
 
 // The corrected and final version of the standard rules.
 export const standardUtilityIconMap: UtilityRule[] = [
-  // More specific rules come BEFORE general rules.
-  { match: /^text-center$/, icon: 'align-center', source: 'lucide' },
-  { match: 'alert-danger', icon: 'alert-circle', source: 'lucide' },
-  { match: /^docker-node/, icon: 'server', source: 'lucide' },
-  { match: /^docker-mysql/, icon: 'database', source: 'lucide' },
-
   // General rules
   { match: /^bg-/, icon: 'palette', source: 'lucide' },
   { match: /^text-/, icon: 'type', source: 'lucide' },
