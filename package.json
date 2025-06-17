@@ -1,32 +1,45 @@
 {
-  "name": "utility-icon-engine",
+  "name": "icon-engine-v2",
   "version": "2.0.0",
-  "description": "A utility-first icon engine that maps class-like strings (e.g., Tailwind, Docker) to icons from Lucide, Tabler, Heroicons, Iconoir, and Phosphor.",
-  "author": "Your Name",
-  "license": "MIT",
+  "description": "Utility Icon Engine for matching utility-like strings (e.g. Tailwind, Docker, etc.) to icons from multiple libraries.",
+  "type": "module",
+  "private": false,
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:lib": "tsc -p tsconfig.build.json"
+  },
   "keywords": [
     "icons",
     "react",
+    "vite",
+    "utility-icons",
+    "icon-engine",
     "lucide",
-    "tabler",
     "heroicons",
+    "tabler",
     "phosphor",
     "iconoir",
     "tailwind",
-    "docker",
-    "utility"
+    "docker"
   ],
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
+  "author": "African Future (Nyigoro)",
+  "license": "MIT",
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@phosphor-icons/react": "^2.1.10",
@@ -36,10 +49,6 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2"
-  },
-  "peerDependencies": {
-    "react": "^18 || ^19",
-    "react-dom": "^18 || ^19"
   },
   "devDependencies": {
     "@types/node": "^20.14.2",
