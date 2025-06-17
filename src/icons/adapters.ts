@@ -53,8 +53,30 @@ export const tablerAdapter: IconLibraryAdapter = {
   },
 };
 
+export const phosphorAdapter: IconLibraryAdapter = {
+  name: 'phosphor',
+  getIcon: (name) => {
+    const Lib = iconEngine.getLibraries().phosphor;
+    const iconName = toPascalCase(name); // e.g., Stack -> Stack, PlayCircle -> PlayCircle
+    const fallback = 'Question';
+    return (Lib?.[iconName] || Lib?.[fallback]) ?? (() => null);
+  },
+};
+
+export const iconoirAdapter: IconLibraryAdapter = {
+  name: 'iconoir',
+  getIcon: (name) => {
+    const Lib = iconEngine.getLibraries().iconoir;
+    const iconName = toPascalCase(name); // e.g., ServerOff -> ServerOff
+    const fallback = 'QuestionMark';
+    return (Lib?.[iconName] || Lib?.[fallback]) ?? (() => null);
+  },
+};
+
 export const iconAdapters = new Map<IconSource, IconLibraryAdapter>([
   [lucideAdapter.name, lucideAdapter],
   [heroiconsAdapter.name, heroiconsAdapter],
   [tablerAdapter.name, tablerAdapter],
+  [phosphorAdapter.name, phosphorAdapter],
+  [iconoirAdapter.name, iconoirAdapter],
 ]);
