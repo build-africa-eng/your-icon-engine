@@ -1,63 +1,53 @@
 // src/icons/adapters.ts
 import React from 'react';
-// Import our library file as a single, all-encompassing namespace
-import * as AllIcons from './library';
-import { IconSource } from '../utils/types';
+import { iconEngine } from '@core/engine'; // Get the engine instance
+import { IconSource } from '@utils/types';
 
-// --- Type Definitions ---
-type IconMap = { [key: string]: React.ElementType };
+// NO LONGER IMPORTING * from lucide, heroicons, tabler here
 
-// --- Icon Maps ---
-// We now access each icon set through the `AllIcons` namespace.
-const lucideIconMap: IconMap = { ...AllIcons.Lucide };
-const heroiconsMap: IconMap = { ...AllIcons.Heroicons };
-const tablerMap: IconMap = { ...AllIcons.Tabler };
-
-
-// Helper to convert kebab-case or snake_case to PascalCase.
 const pascalCaseCache = new Map<string, string>();
 function toPascalCase(str: string): string {
   if (pascalCaseCache.has(str)) return pascalCaseCache.get(str)!;
-  const pascal = str
-    .replace(/[-_]([a-z])/g, g => g[1].toUpperCase())
-    .replace(/(^\w|-\w)/g, g => g.replace(/^-/, '').toUpperCase());
+  const camelCase = str.replace(/[-_]([a-z])/g, g => g[1].toUpperCase());
+  const pascal = camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
   pascalCaseCache.set(str, pascal);
   return pascal;
 }
 
-// Defines the contract for any icon library adapter
 export interface IconLibraryAdapter {
   name: IconSource;
-  getIcon: (name:string) => React.ElementType;
+  getIcon: (name: string) => React.ElementType;
 }
-
-// --- Adapter Implementations ---
 
 export const lucideAdapter: IconLibraryAdapter = {
   name: 'lucide',
   getIcon: (name) => {
-    const iconName = toPascalCase(name);
-    return lucideIconMap[iconName] || lucideIconMap.HelpCircle;
+    const Lucide = iconEngine.getLibraries().lucide;
+    if (!Lucide) return () => null; // Safety check
+    return Lucide[toPascalCase(name) as keyof typeof Lucide] || Lucide.HelpCircle;
   },
 };
 
 export const heroiconsAdapter: IconLibraryAdapter = {
   name: 'heroicons',
   getIcon: (name) => {
+    const Heroicons = iconEngine.getLibraries().heroicons;
+    if (!Heroicons) return () => null; // Safety check
     const iconName = `${toPascalCase(name)}Icon`;
-    return heroiconsMap[iconName] || heroiconsMap.QuestionMarkCircleIcon;
+    return Heroicons[iconName as keyof typeof Heroicons] || Heroicons.QuestionMarkCircleIcon;
   },
 };
 
 export const tablerAdapter: IconLibraryAdapter = {
   name: 'tabler',
   getIcon: (name) => {
+    const Tabler = iconEngine.getLibraries().tabler;
+    if (!Tabler) return () => null; // Safety check
     const iconName = `Icon${toPascalCase(name)}`;
-    return tablerMap[iconName] || tablerMap.IconHelp;
+    return Tabler[iconName as keyof typeof Tabler] || Tabler.IconHelp;
   },
 };
 
-// A central map to hold all registered adapters for easy lookup
 export const iconAdapters = new Map<IconSource, IconLibraryAdapter>([
   [lucideAdapter.name, lucideAdapter],
   [heroiconsAdapter.name, heroiconsAdapter],
