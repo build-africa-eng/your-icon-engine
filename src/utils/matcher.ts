@@ -22,4 +22,7 @@ export const standardUtilityIconMap: UtilityRule[] = [
   { match: /^shadow-/, icon: 'layers', source: 'lucide' },
   { match: /^items-/, icon: 'align-box-center-middle', source: 'tabler' },
   { match: /^justify-/, icon: 'align-box-center-middle', source: 'tabler' },
+ // ✅ Newly added:
+  { match: /^user-profile$/, icon: 'user', source: 'lucide' },
+  { match: /^volume-high$/, icon: 'volume-2', source: 'lucide' },
 ];
