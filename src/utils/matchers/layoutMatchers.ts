@@ -1,8 +1,49 @@
 import { UtilityRule } from '../types';
 
 export const layoutMatchers: UtilityRule[] = [
-  { match: /^flex/, icon: 'layout', source: 'lucide' },
-  { match: /^grid/, icon: 'layout-grid', source: 'lucide' },
-  { match: /^items-/, icon: 'align-box-center-middle', source: 'tabler' },
-  { match: /^justify-/, icon: 'align-box-center-middle', source: 'tabler' },
+  {
+    match: /^grid$|^inline-grid$/,
+    icon: 'grid',
+    source: 'lucide',
+  },
+  {
+    match: /^block$|^inline-block$/,
+    icon: 'square',
+    source: 'lucide',
+  },
+  {
+    match: /^inline$/,
+    icon: 'text-align-justified',
+    source: 'tabler',
+  },
+  {
+    match: /^hidden$|^visible$/,
+    icon: 'eye',
+    source: 'lucide',
+  },
+  {
+    match: /^contents$/,
+    icon: 'code-block',
+    source: 'iconoir',
+  },
+  {
+    match: /^table$|^table-(row|cell|column)$/,
+    icon: 'table',
+    source: 'lucide',
+  },
+  {
+    match: /^float-|^clear-/,
+    icon: 'send-to-back',
+    source: 'lucide',
+  },
+  {
+    match: /^isolate|^isolation-/,
+    icon: 'scan-eye',
+    source: 'tabler',
+  },
+  {
+    match: /^z-/,
+    icon: 'stack',
+    source: 'tabler',
+  }
 ];
