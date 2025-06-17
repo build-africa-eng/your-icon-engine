@@ -7,7 +7,7 @@ interface UtilityCardProps {
   showDebug?: boolean;
 }
 
-export const UtilityIcon: React.FC<UtilityCardProps> = ({ utility, showDebug }) => {
+export const UtilityIcon: React.FC<UtilityIconProps> = ({ utility, showDebug }) => {
   const matched: UtilityRule | null = iconEngine.getMatchedIcon(utility);
 
   const source = matched?.source ?? 'lucide';
