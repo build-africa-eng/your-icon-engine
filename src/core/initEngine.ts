@@ -1,7 +1,7 @@
 // src/core/initEngine.ts
 import { iconEngine } from './engine';
 import { AllIconLibraries } from '@icons/library';
-import { allUtilityIconMap } from '@utils/allMatchers'; // ✅ NEW IMPORT
+import { allUtilityIconMap } from '@utils/matchers/allMatchers'; 
 
 let isEngineInitialized = false;
 
