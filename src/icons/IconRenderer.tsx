@@ -1,3 +1,4 @@
+// src/icons/IconRenderer.tsx
 import React from 'react';
 import { iconAdapters, lucideAdapter } from './adapters';
 import { IconSource } from '@utils/types';
