@@ -12,5 +12,5 @@ export const specialUtilityIconMap: UtilityRule[] = [
 { match: /^docker-redis/, icon:
 'box', source: 'lucide' },
 { match: /^docker-nginx/, icon:
-'globe', source: 'lucide' },
+'network', source: 'lucide' },
 ];
