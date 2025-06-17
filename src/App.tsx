@@ -35,7 +35,7 @@ const App = () => {
         <div className="bg-medium-gray border border-medium-gray rounded-xl shadow-custom-lg p-5">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {utilities.map((utility) => (
-              <UtilityCard key={utility} utility={utility} showDebug={showDebug} />
+              <UtilityIcon key={utility} utility={utility} showDebug={showDebug} />
             ))}
           </div>
         </div>
