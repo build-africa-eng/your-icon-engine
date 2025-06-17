@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+// src/App.tsx
+import React from 'react'; // No longer need useEffect
 import { UtilityIcon } from '@components/UtilityIcon';
-import { initializeIconEngine } from '@core/initEngine';
+// No longer need to import initializers from '@core/initEngine'
 
 const utilities = [
   'bg-blue-500', 'text-red-500', 'text-center', 'docker-node-service',
@@ -9,15 +10,14 @@ const utilities = [
 ];
 
 const App = () => {
-  useEffect(() => {
-    // We only need to initialize the engine once when the app loads.
-    initializeIconEngine();
-  }, []);
+  // The useEffect for initialization has been removed.
+  // The engine is already initialized before this component renders.
 
   return (
     <div className="bg-dark-gray text-light-gray min-h-screen p-12 font-sans">
       <div className="max-w-5xl mx-auto">
         <header className="text-center mb-16">
+          {/* ... header content ... */}
           <h1 className="text-4xl md:text-4.5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-custom-teal to-custom-purple">
             Utility Icon Engine v2
           </h1>
@@ -30,7 +30,7 @@ const App = () => {
             {utilities.map((utility) => (
               <div
                 key={utility}
-                className="flex items-center justify-between p-3 bg-gray-600/50 rounded-lg border-medium-gray hover:bg-amber-400/20 transition-colors duration-200"
+                className="flex items-center justify-between p-3 bg-gray-600/50 rounded-lg border border-medium-gray hover:bg-amber-400/20 transition-colors duration-200"
               >
                 <code className="text-sm font-mono text-cyan-300 bg-gray-500 px-2 py-1 rounded">
                   {utility}
