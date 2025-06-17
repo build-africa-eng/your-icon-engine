@@ -12,7 +12,7 @@ export const standardUtilityIconMap: UtilityRule[] = [
   { match: /^bg-/, icon: 'palette', source: 'lucide' },
   { match: /^text-/, icon: 'type', source: 'lucide' },
   { match: /^border-/, icon: 'square', source: 'lucide' },
-  { match: /^flex/, icon: 'move', source: 'tabler' }, // This rule was missing
+  { match: /^flex/, icon: 'layout', source: 'tabler' }, // This rule was missing
   { match: /^grid/, icon: 'layout-grid', source: 'lucide' },
   { match: /^p-/, icon: 'box-padding', source: 'tabler' },
   { match: /^m-/, icon: 'box-margin', source: 'tabler' },
