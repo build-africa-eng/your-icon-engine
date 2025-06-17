@@ -1,11 +1,11 @@
 // src/utils/allMatchers.ts
-
-import { specialUtilityIconMap } from './specialMatcher';
-import { customUtilityIconMap } from './customMatcher';
+import { UtilityRule } from './types';
 import { standardUtilityIconMap } from './matcher';
+import { customUtilityIconMap } from './customMatcher';
+import { specialUtilityIconMap } from './specialMatcher';
 
-export const allUtilityIconRules = [
-  ...specialUtilityIconMap,   // highest priority
-  ...customUtilityIconMap,    // custom app logic
-  ...standardUtilityIconMap   // default/general rules
+export const allUtilityIconMap: UtilityRule[] = [
+  ...specialUtilityIconMap,       // Optional or rare rules first
+  ...customUtilityIconMap,        // Project-specific rules next
+  ...standardUtilityIconMap,      // General-purpose rules last
 ];
