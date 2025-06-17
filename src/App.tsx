@@ -1,6 +1,6 @@
 // src/App.tsx
 import React, { useState } from 'react';
-import { UtilityIcon } from '@components/UtilityIcon';
+import { UtilityCard } from '@components/UtilityCard';
 
 const utilities = [
   'bg-blue-500', 'text-red-500', 'text-center', 'docker-node-service',
@@ -24,7 +24,7 @@ const App = () => {
               <input
                 type="checkbox"
                 checked={showDebug}
-                onChange={() => setShowDebug(prev => !prev)}
+                onChange={() => setShowDebug((prev) => !prev)}
                 className="accent-custom-teal"
               />
               Show Debug Info
@@ -35,15 +35,7 @@ const App = () => {
         <div className="bg-medium-gray border border-medium-gray rounded-xl shadow-custom-lg p-5">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {utilities.map((utility) => (
-              <div
-                key={utility}
-                className="flex flex-col gap-2 p-3 bg-gray-600/50 rounded-lg border border-medium-gray hover:bg-amber-400/10 transition-colors duration-200"
-              >
-                <code className="text-sm font-mono text-cyan-300 bg-gray-500 px-2 py-1 rounded">
-                  {utility}
-                </code>
-                <UtilityIcon utility={utility} showDebug={showDebug} />
-              </div>
+              <UtilityCard key={utility} utility={utility} showDebug={showDebug} />
             ))}
           </div>
         </div>
