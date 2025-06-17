@@ -1,25 +1,24 @@
-// src/matchers/styleMatchers.ts
+// src/matchers/spacingMatchers.ts
 import { UtilityRule } from '../types';
 
-export const styleMatchers: UtilityRule[] = [
-  { match: /^text-/, icon: 'Typography', source: 'tabler' },
-  { match: /^font-/, icon: 'TypographySmall', source: 'tabler' },
-  { match: /^tracking-/, icon: 'LetterSpacing', source: 'tabler' },
-  { match: /^leading-/, icon: 'LineHeight', source: 'tabler' },
+export const spacingMatchers: UtilityRule[] = [
+  { match: /^p-/, icon: 'Padding', source: 'tabler' },
+  { match: /^pt-/, icon: 'PaddingTop', source: 'tabler' },
+  { match: /^pr-/, icon: 'PaddingRight', source: 'tabler' },
+  { match: /^pb-/, icon: 'PaddingBottom', source: 'tabler' },
+  { match: /^pl-/, icon: 'PaddingLeft', source: 'tabler' },
+  { match: /^px-/, icon: 'LayoutColumns', source: 'tabler' },
+  { match: /^py-/, icon: 'LayoutRows', source: 'tabler' },
 
-  { match: /^bg-/, icon: 'ColorSwatch', source: 'tabler' },
-  { match: /^from-/, icon: 'Gradient', source: 'tabler' },
-  { match: /^via-/, icon: 'Gradient', source: 'tabler' },
-  { match: /^to-/, icon: 'Gradient', source: 'tabler' },
+  { match: /^m-/, icon: 'Margin', source: 'tabler' },
+  { match: /^mt-/, icon: 'ArrowTop', source: 'tabler' },
+  { match: /^mr-/, icon: 'ArrowRight', source: 'tabler' },
+  { match: /^mb-/, icon: 'ArrowBottom', source: 'tabler' },
+  { match: /^ml-/, icon: 'ArrowLeft', source: 'tabler' },
+  { match: /^mx-/, icon: 'LayoutColumns', source: 'tabler' },
+  { match: /^my-/, icon: 'LayoutRows', source: 'tabler' },
 
-  { match: /^opacity-/, icon: 'Opacity', source: 'tabler' },
-  { match: /^shadow/, icon: 'Shadow', source: 'tabler' },
-  { match: /^blur/, icon: 'Blur', source: 'tabler' },
-
-  { match: /^underline/, icon: 'Underline', source: 'tabler' },
-  { match: /^line-through/, icon: 'Strikethrough', source: 'tabler' },
-  { match: /^italic/, icon: 'Italic', source: 'tabler' },
-  { match: /^uppercase/, icon: 'LetterCaseUpper', source: 'tabler' },
-  { match: /^lowercase/, icon: 'LetterCaseLower', source: 'tabler' },
-  { match: /^capitalize/, icon: 'LetterCaseCapitalize', source: 'tabler' },
+  { match: /^space-x-/, icon: 'ArrowsHorizontal', source: 'tabler' },
+  { match: /^space-y-/, icon: 'ArrowsVertical', source: 'tabler' },
+  { match: /^gap-/, icon: 'LayoutGrid', source: 'tabler' },
 ];
