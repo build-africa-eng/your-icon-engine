@@ -12,6 +12,7 @@ import { interactivityMatchers } from './interactivityMatchers';
 import { flexboxMatchers } from './flexboxMatchers.ts';
 import { gridMatchers } from './gridMatchers';
 import {typographyMatchers } from './typographyMatchers':
+import { tableMatchers } from './tableMatchers';
 
 export const allUtilityIconMap: UtilityRule[] = [
   ...customMatchers,
@@ -27,4 +28,5 @@ export const allUtilityIconMap: UtilityRule[] = [
   ...flexboxMatchers,
   ...gridMatchers,
   ...typographyMatchers,
+  ...tableMatchers,
 ];
