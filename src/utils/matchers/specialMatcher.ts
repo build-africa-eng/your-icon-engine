@@ -1,5 +1,5 @@
 // src/utils/iconRules/specialMatcher.ts
-import { UtilityRule } from './types';
+import { UtilityRule } from '../types';
 
 export const specialUtilityIconMap: UtilityRule[] = [
   // More specific rules come BEFORE general rules.
