@@ -1,0 +1,10 @@
+# .npmignore
+src/pages/
+src/dev/
+src/tests/
+*.test.ts
+*.test.tsx
+vite.config.ts
+tsconfig.json
+tsconfig.build.json
+README.md
