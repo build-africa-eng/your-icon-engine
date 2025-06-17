@@ -23,7 +23,7 @@ export const layoutMatchers: UtilityRule[] = [
   },
   {
     match: /^contents$/,
-    icon: 'code-block',
+    icon: 'codeblock',
     source: 'iconoir',
   },
   {
