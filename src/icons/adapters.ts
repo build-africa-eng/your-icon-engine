@@ -1,9 +1,7 @@
 // src/icons/adapters.ts
 import React from 'react';
-import { iconEngine } from '@core/engine'; // Get the engine instance
+import { iconEngine } from '@core/engine';
 import { IconSource } from '@utils/types';
-
-// NO LONGER IMPORTING * from lucide, heroicons, tabler here
 
 const pascalCaseCache = new Map<string, string>();
 function toPascalCase(str: string): string {
@@ -14,6 +12,12 @@ function toPascalCase(str: string): string {
   return pascal;
 }
 
+const fallbackIcons: Record<IconSource, string> = {
+  lucide: 'HelpCircle',
+  heroicons: 'QuestionMarkCircleIcon',
+  tabler: 'IconHelp',
+};
+
 export interface IconLibraryAdapter {
   name: IconSource;
   getIcon: (name: string) => React.ElementType;
@@ -22,29 +26,30 @@ export interface IconLibraryAdapter {
 export const lucideAdapter: IconLibraryAdapter = {
   name: 'lucide',
   getIcon: (name) => {
-    const Lucide = iconEngine.getLibraries().lucide;
-    if (!Lucide) return () => null; // Safety check
-    return Lucide[toPascalCase(name) as keyof typeof Lucide] || Lucide.HelpCircle;
+    const Lib = iconEngine.getLibraries().lucide;
+    const iconName = toPascalCase(name);
+    const fallback = fallbackIcons.lucide;
+    return (Lib?.[iconName] || Lib?.[fallback]) ?? (() => null);
   },
 };
 
 export const heroiconsAdapter: IconLibraryAdapter = {
   name: 'heroicons',
   getIcon: (name) => {
-    const Heroicons = iconEngine.getLibraries().heroicons;
-    if (!Heroicons) return () => null; // Safety check
+    const Lib = iconEngine.getLibraries().heroicons;
     const iconName = `${toPascalCase(name)}Icon`;
-    return Heroicons[iconName as keyof typeof Heroicons] || Heroicons.QuestionMarkCircleIcon;
+    const fallback = fallbackIcons.heroicons;
+    return (Lib?.[iconName] || Lib?.[fallback]) ?? (() => null);
   },
 };
 
 export const tablerAdapter: IconLibraryAdapter = {
   name: 'tabler',
   getIcon: (name) => {
-    const Tabler = iconEngine.getLibraries().tabler;
-    if (!Tabler) return () => null; // Safety check
+    const Lib = iconEngine.getLibraries().tabler;
     const iconName = `Icon${toPascalCase(name)}`;
-    return Tabler[iconName as keyof typeof Tabler] || Tabler.IconHelp;
+    const fallback = fallbackIcons.tabler;
+    return (Lib?.[iconName] || Lib?.[fallback]) ?? (() => null);
   },
 };
 
