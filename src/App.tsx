@@ -1,6 +1,7 @@
-// src/App.tsx
 import React, { useState } from 'react';
 import { UtilityIcon } from '@components/UtilityIcon';
+import { Link, Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import { UtilityRegistry } from '@pages/UtilityRegistry';
 
 const utilities = [
   'bg-blue-500', 'text-red-500', 'text-center', 'docker-node-service',
@@ -8,7 +9,7 @@ const utilities = [
   'world-map', 'clock-time', 'an-unmatched-utility'
 ];
 
-const App = () => {
+const Home = () => {
   const [showDebug, setShowDebug] = useState(false);
 
   return (
@@ -19,8 +20,8 @@ const App = () => {
             Utility Icon Engine v2
           </h1>
           <p className="text-gray-400 mt-2">With Debugging & Plugin Support</p>
-          <div className="mt-4">
-            <label className="text-sm text-gray-300 flex items-center gap-2 justify-center">
+          <div className="mt-4 flex items-center justify-center gap-6">
+            <label className="text-sm text-gray-300 flex items-center gap-2">
               <input
                 type="checkbox"
                 checked={showDebug}
@@ -29,6 +30,13 @@ const App = () => {
               />
               Show Debug Info
             </label>
+
+            <Link
+              to="/registry"
+              className="text-sm text-custom-teal underline hover:text-custom-purple transition"
+            >
+              View All Utilities →
+            </Link>
           </div>
         </header>
 
@@ -45,6 +53,17 @@ const App = () => {
         </footer>
       </div>
     </div>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/registry" element={<UtilityRegistry />} />
+      </Routes>
+    </Router>
   );
 };
 
