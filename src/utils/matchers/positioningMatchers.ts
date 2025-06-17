@@ -1,59 +1,16 @@
+// src/matchers/positioningMatchers.ts
 import { UtilityRule } from '../types';
 
 export const positioningMatchers: UtilityRule[] = [
-  {
-    match: /^static$/,
-    icon: 'layout', // General layout symbol
-    source: 'tabler',
-  },
-  {
-    match: /^fixed$/,
-    icon: 'pin',
-    source: 'lucide',
-  },
-  {
-    match: /^absolute$/,
-    icon: 'crosshair',
-    source: 'lucide',
-  },
-  {
-    match: /^relative$/,
-    icon: 'vector', // Relative positioning
-    source: 'tabler',
-  },
-  {
-    match: /^sticky$/,
-    icon: 'magnet',
-    source: 'lucide',
-  },
-  {
-    match: /^inset-/,
-    icon: 'move', // Represents offset positioning
-    source: 'tabler',
-  },
-  {
-    match: /^top-/,
-    icon: 'arrow-big-up-line',
-    source: 'tabler',
-  },
-  {
-    match: /^right-/,
-    icon: 'arrow-big-right-line',
-    source: 'tabler',
-  },
-  {
-    match: /^bottom-/,
-    icon: 'arrow-big-down-line',
-    source: 'tabler',
-  },
-  {
-    match: /^left-/,
-    icon: 'arrow-big-left-line',
-    source: 'tabler',
-  },
-  {
-    match: /^z-/,
-    icon: 'stack',
-    source: 'tabler',
-  },
+  { match: /^static$/, icon: 'LayoutDistributeVertical', source: 'tabler' },
+  { match: /^fixed$/, icon: 'Pin', source: 'tabler' },
+  { match: /^absolute$/, icon: 'Anchor', source: 'tabler' },
+  { match: /^relative$/, icon: 'Transform', source: 'tabler' },
+  { match: /^sticky$/, icon: 'GripVertical', source: 'tabler' },
+  { match: /^top-/, icon: 'ArrowBigUpLine', source: 'tabler' },
+  { match: /^bottom-/, icon: 'ArrowBigDownLine', source: 'tabler' },
+  { match: /^left-/, icon: 'ArrowBigLeftLine', source: 'tabler' },
+  { match: /^right-/, icon: 'ArrowBigRightLine', source: 'tabler' },
+  { match: /^inset-/, icon: 'Focus2', source: 'tabler' },
+  { match: /^z-/, icon: 'Stack', source: 'tabler' },
 ];
