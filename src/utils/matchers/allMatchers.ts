@@ -7,7 +7,7 @@ import { positioningMatchers } from './positioningMatchers';
 import { sizingMatchers } from './sizingMatchers';
 import { dockerMatchers } from './dockerMatchers';
 import { customMatchers } from './customMatchers';
-import { animation matchers } from './animationMatchers';
+import { animationMatchers } from './animationMatchers';
 import { interactivityMatchers } from './interactivityMatchers';
 import { flexboxMatchers } from './flexboxMatchers.ts';
 import { gridMatchers } from './gridMatchers';
