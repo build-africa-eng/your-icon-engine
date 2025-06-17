@@ -22,6 +22,7 @@ export default defineConfig({
       '@icons': path.resolve(__dirname, 'src/icons'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@core': path.resolve(__dirname, 'src/core'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx'], // Added .js and .jsx for safety
   },
