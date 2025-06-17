@@ -1,22 +1,45 @@
 {
-  "name": "icon-engine-v2",
+  "name": "utility-icon-engine",
   "version": "2.0.0",
-  "type": "module",
-  "private": true,
+  "description": "A utility-first icon engine that maps class-like strings (e.g., Tailwind, Docker) to icons from Lucide, Tabler, Heroicons, Iconoir, and Phosphor.",
+  "author": "Your Name",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "icons",
+    "react",
+    "lucide",
+    "tabler",
+    "heroicons",
+    "phosphor",
+    "iconoir",
+    "tailwind",
+    "docker",
+    "utility"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@tabler/icons-react": "^3.34.0",
     "@phosphor-icons/react": "^2.1.10",
-    "lucide-react": "^0.514.0",
+    "@tabler/icons-react": "^3.34.0",
     "iconoir-react": "^7.11.0",
+    "lucide-react": "^0.514.0",
     "react": "^19.1.0",
-    "react-router-dom": "^7.6.2",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.2"
+  },
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
   "devDependencies": {
     "@types/node": "^20.14.2",
