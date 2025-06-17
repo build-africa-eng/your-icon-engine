@@ -13,6 +13,7 @@
     "@tabler/icons-react": "^3.34.0",
     "@phosphor-icons/react": "^2.1.10",
     "lucide-react": "^0.514.0",
+    "iconoir": "^7.11.0",
     "react": "^19.1.0",
     "react-router-dom": "^7.6.2",
     "react-dom": "^19.1.0"
