@@ -1,16 +1,14 @@
-// src/components/UtilityCard.tsx
-import React, { useState } from 'react';
+import React from 'react';
 import { iconEngine } from '@core/engine';
-import { UtilityRule } from '@utils/types';
 import { UtilityIcon } from './UtilityIcon';
+import { UtilityRule } from '@utils/types';
 
 interface UtilityCardProps {
   utility: string;
+  showDebug?: boolean;
 }
 
-export const UtilityCard: React.FC<UtilityCardProps> = ({ utility }) => {
-  const [debug, setDebug] = useState(false);
-
+export const UtilityCard: React.FC<UtilityCardProps> = ({ utility, showDebug }) => {
   const matched: UtilityRule | null = iconEngine.getMatchedIcon(utility);
 
   const source = matched?.source ?? 'lucide';
@@ -18,19 +16,18 @@ export const UtilityCard: React.FC<UtilityCardProps> = ({ utility }) => {
   const fallbackUsed = matched === null;
 
   return (
-    <div className="p-4 rounded-lg border border-medium-gray bg-gray-700/40 hover:bg-amber-400/20 transition-colors duration-200">
+    <div className="flex flex-col gap-2 p-3 bg-gray-600/50 rounded-lg border border-medium-gray hover:bg-amber-400/10 transition-colors duration-200">
+      <code className="text-sm font-mono text-cyan-300 bg-gray-500 px-2 py-1 rounded">
+        {utility}
+      </code>
+
       <div className="flex items-center justify-between">
-        <code className="text-sm font-mono text-cyan-300 bg-gray-600 px-2 py-1 rounded">
-          {utility}
-        </code>
-        <div className="flex items-center gap-2">
-          <span className="text-gray-400 text-xs">ICON</span>
-          <UtilityIcon utility={utility} className="w-5 h-5 text-custom-teal" />
-        </div>
+        <span className="text-gray-400 text-xs">ICON</span>
+        <UtilityIcon utility={utility} className="w-5 h-5 text-custom-teal" />
       </div>
 
-      {debug && (
-        <div className="mt-3 text-xs text-gray-400 space-y-1">
+      {showDebug && (
+        <div className="text-xs mt-2 text-gray-400 space-y-1">
           <div>
             <span className="font-semibold text-gray-300">Matched:</span>{' '}
             {matched?.match?.toString() ?? 'No match (fallback)'}
@@ -47,13 +44,6 @@ export const UtilityCard: React.FC<UtilityCardProps> = ({ utility }) => {
           </div>
         </div>
       )}
-
-      <button
-        onClick={() => setDebug((prev) => !prev)}
-        className="mt-3 text-amber-300 text-xs underline hover:text-amber-200"
-      >
-        {debug ? 'Hide Debug Info' : 'Show Debug Info'}
-      </button>
     </div>
   );
 };
