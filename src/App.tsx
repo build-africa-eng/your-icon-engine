@@ -1,6 +1,6 @@
 // src/App.tsx
 import React, { useState } from 'react';
-import { UtilityCard } from '@components/UtilityCard';
+import { UtilityIcon } from '@components/UtilityIcon';
 
 const utilities = [
   'bg-blue-500', 'text-red-500', 'text-center', 'docker-node-service',
