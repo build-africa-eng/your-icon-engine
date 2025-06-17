@@ -7,6 +7,8 @@ import { positioningMatchers } from './positioningMatchers';
 import { sizingMatchers } from './sizingMatchers';
 import { dockerMatchers } from './dockerMatchers';
 import { customMatchers } from './customMatchers';
+import { animation matchers } from './animationMatchers';
+import { interactivityMatchers } from './interactivityMatchers';
 
 export const allUtilityIconMap: UtilityRule[] = [
   ...customMatchers,
@@ -17,4 +19,6 @@ export const allUtilityIconMap: UtilityRule[] = [
   ...borderMatchers,
   ...positioningMatchers,
   ...sizingMatchers,
+  ...animationMatchers,
+  ...interactivityMatchers,
 ];
