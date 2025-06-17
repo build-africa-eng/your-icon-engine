@@ -1,4 +1,4 @@
-import { UtilityRule } from './types';
+import { UtilityRule } from '../types';
 
 // The corrected and final version of the standard rules.
 export const standardUtilityIconMap: UtilityRule[] = [
