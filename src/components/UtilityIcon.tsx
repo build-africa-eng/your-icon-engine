@@ -1,6 +1,5 @@
 import React from 'react';
 import { iconEngine } from '@core/engine';
-import { UtilityIcon } from './UtilityIcon';
 import { UtilityRule } from '@utils/types';
 
 interface UtilityCardProps {
