@@ -1,9 +1,11 @@
 // src/icons/library.ts
+import * as Lucide from 'lucide-react';
+import * as Heroicons from '@heroicons/react/24/outline';
+import * as Tabler from '@tabler/icons-react';
 
-// This file uses ES module re-exporting to create a single, static
-// entry point for all icon libraries. This ensures the bundler
-// includes them in the final build.
-
-export * as Lucide from 'lucide-react';
-export * as Heroicons from '@heroicons/react/24/outline';
-export * as Tabler from '@tabler/icons-react';
+// Export all the libraries in a single, accessible object.
+export const AllIconLibraries = {
+  lucide: Lucide,
+  heroicons: Heroicons,
+  tabler: Tabler,
+};
